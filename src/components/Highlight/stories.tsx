@@ -8,7 +8,8 @@ export default {
     title: 'test in component by title',
     subTitle: 'test in component by subtitle',
     buttonLabel: 'buy Now',
-    buttonLink: '/test-link'
+    buttonLink: '/test-link',
+    backgroundImage: '/img/icon-512.png'
   }
 } as Meta
 
