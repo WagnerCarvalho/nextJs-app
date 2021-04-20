@@ -12,6 +12,8 @@ export const Wrapper = styled.section<WrapperProps>`
     background-size: cover;
     height: 23rem;
     display: grid;
+    grid-template-areas: 'floatimage content';
+    grid-template-columns: 1.9fr 2fr
 
     &::after {
       content: '';
@@ -27,8 +29,23 @@ export const Wrapper = styled.section<WrapperProps>`
   `}
 `
 
+export const FloatImage = styled.img`
+  ${({ theme }) => css`
+    grid-area: floatimage;
+    z-index: ${theme.layers.base};
+    max-height: 23rem;
+    max-width: 100%;
+    align-self: end;
+
+    ${media.greaterThan('medium')`
+        height: 32rem;
+    `}
+  `}
+`
+
 export const Content = styled.div`
   ${({ theme }) => css`
+    grid-area: content;
     z-index: ${theme.layers.base};
     text-align: right;
     padding: ${theme.spacings.xsmall};
@@ -44,7 +61,7 @@ export const Title = styled.h2`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.large};
     font-weight: ${theme.font.bold};
-    color: ${theme.colors.white};
+    color: ${theme.colors.primary};
 
     ${media.greaterThan('medium')`
         font-size: ${theme.font.sizes.xxlarge};
@@ -56,7 +73,7 @@ export const SubTitle = styled.h3`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
     font-weight: ${theme.font.light};
-    color: ${theme.colors.white};
+    color: ${theme.colors.primary};
     margin-bottom: ${theme.spacings.medium};
 
     ${media.greaterThan('medium')`
