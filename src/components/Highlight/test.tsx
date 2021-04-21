@@ -3,6 +3,8 @@ import { screen } from '@testing-library/react'
 import Highlight from '.'
 import { renderWithTheme } from 'utils/test/helpers'
 
+import * as S from './styles'
+
 const props = {
   title: 'Heading 1',
   subTitle: 'Heading 2',
@@ -35,14 +37,37 @@ describe('<Highlight />', () => {
   })
 
   it('should render Float Image', () => {
-    const { debug, container } = renderWithTheme(
-      <Highlight {...props} floatImage="/float-image.png" />
-    )
-    debug(container)
+    renderWithTheme(<Highlight {...props} floatImage="/float-image.png" />)
 
     expect(screen.getByRole('img', { name: props.title })).toHaveAttribute(
       'src',
       '/float-image.png'
+    )
+  })
+
+  it('should render align Right by default', () => {
+    const { container } = renderWithTheme(
+      <Highlight {...props} floatImage="/float-image.png" />
+    )
+
+    expect(container.firstChild).toHaveStyleRule(
+      'grid-template-areas',
+      "'floatimage content'"
+    )
+
+    expect(container.firstChild).toHaveStyleRule('text-align', 'right', {
+      modifier: `${S.Content}`
+    })
+  })
+
+  it('should render align Left', () => {
+    const { container } = renderWithTheme(
+      <Highlight {...props} floatImage="/float-image.png" alignment="left" />
+    )
+
+    expect(container.firstChild).toHaveStyleRule(
+      'grid-template-areas',
+      "'content floatimage'"
     )
   })
 })
