@@ -6,9 +6,10 @@ export default {
   component: GameCard,
   args: {
     title: 'Hoje é uma lindo Dia!!!',
-    develeper: 'Wagner Carvalho',
+    developer: 'Wagner Carvalho',
     img: 'https://source.unsplash.com/user/willianjusten/300x140',
-    price: 'R$ 235,00'
+    price: 'R$ 235,00',
+    promotionalPrice: '199,00'
   }
 } as Meta
 
