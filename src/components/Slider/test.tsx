@@ -5,14 +5,12 @@ import Slider from '.'
 
 describe('<Slider />', () => {
   it('should rebder children as slider item', () => {
-    const { debug, container } = render(
+    const { container } = render(
       <Slider settings={{ slidesToShow: 2, infinite: false }}>
         <p>item1</p>
         <p>item2</p>
       </Slider>
     )
-
-    debug(container)
 
     expect(screen.getByText(/item1/i).parentElement?.parentElement).toHaveClass(
       'slick-slide'
