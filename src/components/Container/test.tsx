@@ -4,12 +4,11 @@ import theme from 'styles/theme'
 
 describe('<Container />', () => {
   it('should render the heading', () => {
-    const { debug, container } = renderWithTheme(
+    const { container } = renderWithTheme(
       <Container>
         <span>Won Games</span>
       </Container>
     )
-    debug(container)
 
     expect(container.firstChild).toHaveStyleRule(
       'max-width',
