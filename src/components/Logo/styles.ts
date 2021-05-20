@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
@@ -34,7 +35,7 @@ const wrapperModifiers = {
 
 export const Wrapper = styled.div<LogoProps>`
   ${({ theme, color, size, hideOnMobile }) => css`
-    color: ${theme.colors[color]};
+    color: ${theme.colors[color!]};
 
     ${!!size && wrapperModifiers[size]}
     ${!!hideOnMobile && wrapperModifiers.hideOnMobile}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import styled, { css, DefaultTheme } from 'styled-components'
 import media from 'styled-media-query'
 import { HeadingProps, LineColors } from '.'
@@ -40,10 +41,10 @@ const wrappersModifiers = {
 
 export const Wrapper = styled.h2<HeadingProps>`
   ${({ theme, color, lineLeft, lineBottom, size, lineColor }) => css`
-    color: ${theme.colors[color]};
+    color: ${theme.colors[color!]};
 
-    ${lineLeft && wrappersModifiers.lineLeft(theme, lineColor)}
-    ${lineBottom && wrappersModifiers.lineBottom(theme, lineColor)}
+    ${lineLeft && wrappersModifiers.lineLeft(theme, lineColor!)}
+    ${lineBottom && wrappersModifiers.lineBottom(theme, lineColor!)}
     ${!!size && wrappersModifiers[size](theme)}
   `}
 `

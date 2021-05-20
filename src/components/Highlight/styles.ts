@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import styled, { css } from 'styled-components'
 import { HighLightProps } from '.'
 import media from 'styled-media-query'
@@ -47,7 +48,7 @@ export const Wrapper = styled.section<WrapperProps>`
         height: 32rem;
     `}
 
-    ${WappersMofiers[alignment]()}
+    ${WappersMofiers[alignment!]()}
   `}
 `
 
