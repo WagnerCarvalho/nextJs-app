@@ -37,5 +37,29 @@ describe('<Checkbox />', () => {
     await waitFor(() => {
       expect(onCheck).toHaveBeenCalledTimes(1)
     })
+    expect(onCheck).toHaveBeenCalledWith(true)
+  })
+
+  it('should dispatch checked status change', async () => {
+    const onCheck = jest.fn()
+
+    renderWithTheme(<Checkbox label="CheckBox" onCheck={onCheck} isChecked />)
+
+    expect(onCheck).not.toHaveBeenCalled()
+
+    userEvent.click(screen.getByRole('checkbox'))
+    await waitFor(() => {
+      expect(onCheck).toHaveBeenCalledTimes(1)
+    })
+    expect(onCheck).toHaveBeenCalledWith(false)
+  })
+
+  it('should be accesible with tab', () => {
+    renderWithTheme(<Checkbox label="Checkbox" labelFor="Checkbox" />)
+    expect(document.body).toHaveFocus()
+
+    userEvent.tab()
+
+    expect(screen.getByLabelText(/checkbox/i)).toHaveFocus()
   })
 })
